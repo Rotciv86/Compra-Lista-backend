@@ -4,10 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-js": "tsc",
-    "build-js:dev": "npm run build-js -- -w",
-    "test": "jest",
-    "test:dev": "npm test -- --watchAll",
+    "build": "tsc",
+    "build:dev": "tsc -w",
+    "start": "node .",
+    "start:dev": "node --watch .",
+    "test": "jest --passWithNoTests",
+    "test:dev": "jest --watchAll",
+    "test:coverage": "jest --coverage --passWithNoTests",
     "prepare": "husky install"
   },
   "keywords": [],
