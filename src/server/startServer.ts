@@ -16,3 +16,5 @@ const startServer = async (port: number) =>
       reject(error);
     });
   });
+
+export default startServer;
