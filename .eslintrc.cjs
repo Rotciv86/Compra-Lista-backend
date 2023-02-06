@@ -9,7 +9,6 @@ module.exports = {
       extends: ["xo-typescript", "prettier"],
       files: ["*.ts", "*.tsx"],
       rules: {
-        "no-implicit-coercion": "off",
         "no-unused-vars": ["error"],
         "@typescript-eslint/consistent-type-definitions": [
           "error",
@@ -27,8 +26,5 @@ module.exports = {
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
-  },
-  rules: {
-    "no-implicit-coercion": "off",
   },
 };
