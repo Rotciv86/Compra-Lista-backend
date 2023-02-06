@@ -1,6 +1,6 @@
 module.exports = {
   env: {
-    browser: true,
+    node: true,
     es2021: true,
   },
   extends: ["xo", "prettier"],
@@ -9,6 +9,8 @@ module.exports = {
       extends: ["xo-typescript", "prettier"],
       files: ["*.ts", "*.tsx"],
       rules: {
+        "no-implicit-coercion": "off",
+        "no-unused-vars": ["error"],
         "@typescript-eslint/consistent-type-definitions": [
           "error",
           "interface",
@@ -17,12 +19,17 @@ module.exports = {
         "@typescript-eslint/no-empty-function": "off",
       },
     },
+    {
+      files: ["src/**/models/**/*.ts"],
+      rules: { "@typescript-eslint/naming-convention": "off" },
+    },
   ],
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
   },
   rules: {
+    "no-implicit-coercion": "off",
     "no-unused-vars": [
       "error",
       {
