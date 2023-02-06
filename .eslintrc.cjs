@@ -6,28 +6,34 @@ module.exports = {
   extends: ["xo", "prettier"],
   overrides: [
     {
-      extends: ["xo-typescript", "prettier"],
       files: ["*.ts", "*.tsx"],
+      extends: ["xo-typescript", "prettier"],
+      parser: "@typescript-eslint/parser",
+      parserOptions: {
+        ecmaVersion: "latest",
+        sourceType: "module",
+      },
       rules: {
         "no-implicit-coercion": "off",
-        "no-unused-vars": ["error"],
-        "@typescript-eslint/consistent-type-definitions": [
-          "error",
-          "interface",
-        ],
         "@typescript-eslint/indent": "off",
         "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/consistent-type-definitions": [
+          "error",
+          {
+            interface: "never",
+          },
+        ],
+        "no-unused-vars": ["error"],
       },
     },
     {
       files: ["src/**/models/**/*.ts"],
-      rules: { "@typescript-eslint/naming-convention": "off" },
+      rules: {
+        "@typescript-eslint/naming-convention": "off",
+      },
     },
   ],
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-  },
+  parser: "babel-eslint",
   rules: {
     "no-implicit-coercion": "off",
   },
