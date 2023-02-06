@@ -9,6 +9,7 @@ module.exports = {
       extends: ["xo-typescript", "prettier"],
       files: ["*.ts", "*.tsx"],
       rules: {
+        "@typescript-eslint/naming-convention": "off",
         "no-implicit-coercion": "off",
         "no-unused-vars": ["error"],
         "@typescript-eslint/consistent-type-definitions": [
@@ -21,7 +22,6 @@ module.exports = {
     },
     {
       files: ["src/**/models/**/*.ts"],
-      rules: { "@typescript-eslint/naming-convention": "off" },
     },
   ],
   parserOptions: {
