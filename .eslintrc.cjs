@@ -1,40 +1,21 @@
 module.exports = {
   env: {
-    es2021: true,
+    browser: true,
+    es6: true,
     node: true,
   },
-  extends: ["xo", "prettier"],
-  overrides: [
-    {
-      files: ["*.ts", "*.tsx"],
-      extends: ["xo-typescript", "prettier"],
-      parser: "@typescript-eslint/parser",
-      parserOptions: {
-        ecmaVersion: "latest",
-        sourceType: "module",
-      },
-      rules: {
-        "no-implicit-coercion": "off",
-        "@typescript-eslint/indent": "off",
-        "@typescript-eslint/no-empty-function": "off",
-        "@typescript-eslint/consistent-type-definitions": [
-          "error",
-          {
-            interface: "never",
-          },
-        ],
-        "no-unused-vars": ["error"],
-      },
-    },
-    {
-      files: ["src/**/models/**/*.ts"],
-      rules: {
-        "@typescript-eslint/naming-convention": "off",
-      },
-    },
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "xo-space/esnext",
   ],
-  parser: "babel-eslint",
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    sourceType: "module",
+  },
+  plugins: ["@typescript-eslint"],
   rules: {
-    "no-implicit-coercion": "off",
+    "@typescript-eslint/member-ordering": "off",
   },
 };
