@@ -1,7 +1,7 @@
 module.exports = {
   env: {
-    node: true,
     es2021: true,
+    node: true,
   },
   extends: ["xo", "prettier"],
   overrides: [
@@ -30,16 +30,5 @@ module.exports = {
   },
   rules: {
     "no-implicit-coercion": "off",
-    "no-unused-vars": [
-      "error",
-      {
-        vars: "all",
-        args: "after-used",
-        ignoreRestSiblings: true,
-        argsIgnorePattern: /^_/.source,
-        caughtErrors: "all",
-        caughtErrorsIgnorePattern: /^_$/.source,
-      },
-    ],
   },
 };
