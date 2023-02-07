@@ -20,7 +20,10 @@ module.exports = {
     },
     {
       files: ["src/**/models/**/*.ts"],
-      rules: { "@typescript-eslint/naming-convention": "off" },
+      rules: {
+        "@typescript-eslint/naming-convention": "off",
+        "@typescript-eslint/member-ordering": "warn",
+      },
     },
   ],
   parserOptions: {
