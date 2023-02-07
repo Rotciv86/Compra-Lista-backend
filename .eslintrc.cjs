@@ -1,14 +1,26 @@
 module.exports = {
   env: {
-    browser: true,
     es2021: true,
+    node: true,
   },
-  extends: ["xo", "prettier"],
+
+  extends: [
+    "xo",
+    "prettier",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+  ],
+  parser: "@typescript-eslint/parser",
+  plugins: ["@typescript-eslint"],
+  root: true,
   overrides: [
     {
       extends: ["xo-typescript", "prettier"],
       files: ["*.ts", "*.tsx"],
       rules: {
+        "@typescript-eslint/prefer-nullish-coalescing": "off",
+        "no-implicit-coercion": "off",
+        "no-unused-vars": ["error"],
         "@typescript-eslint/consistent-type-definitions": [
           "error",
           "interface",
@@ -23,16 +35,7 @@ module.exports = {
     sourceType: "module",
   },
   rules: {
-    "no-unused-vars": [
-      "error",
-      {
-        vars: "all",
-        args: "after-used",
-        ignoreRestSiblings: true,
-        argsIgnorePattern: /^_/.source,
-        caughtErrors: "all",
-        caughtErrorsIgnorePattern: /^_$/.source,
-      },
-    ],
+    "no-implicit-coercion": "off",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
   },
 };
