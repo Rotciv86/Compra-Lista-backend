@@ -18,7 +18,7 @@ module.exports = {
       extends: ["xo-typescript", "prettier"],
       files: ["*.ts", "*.tsx"],
       rules: {
-        "@typescript-eslint/prefer-nullish-coalescing": "on",
+        "@typescript-eslint/prefer-nullish-coalescing": "off",
         "no-implicit-coercion": "off",
         "no-unused-vars": ["error"],
         "@typescript-eslint/consistent-type-definitions": [
@@ -36,6 +36,6 @@ module.exports = {
   },
   rules: {
     "no-implicit-coercion": "off",
-    "@typescript-eslint/prefer-nullish-coalescing": "on",
+    "@typescript-eslint/prefer-nullish-coalescing": "off",
   },
 };
