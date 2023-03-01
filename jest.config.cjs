@@ -8,5 +8,7 @@ module.exports = {
     "!src/index.ts",
     "!src/server/startServer.ts",
     "!src/server/loadEnvironment.ts",
+    "!src/database/databaseConnection.ts",
+    "!src/database/models/Users.ts",
   ],
 };
