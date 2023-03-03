@@ -2,6 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import environment from "../loadEnvironment.js";
 import cors from "cors";
+import { errorNotFound, generalError } from "./middlewares/error.js";
 
 const { corsAllowedDomain } = environment;
 
@@ -13,10 +14,11 @@ const allowedOrigins = [corsAllowedDomain];
 const options: cors.CorsOptions = { origin: allowedOrigins };
 
 app.use(cors(options));
-app.use(express.json());
 app.use(morgan("dev"));
-app.use("/", (req, res) => {
-  res.send("It is working");
-});
+app.use(express.json());
+
+app.use(errorNotFound);
+
+app.use(generalError);
 
 export default app;
