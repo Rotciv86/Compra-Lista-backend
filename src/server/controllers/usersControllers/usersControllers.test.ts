@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import bcryptjs from "bcryptjs";
 import User from "../../../database/models/User.js";
 import type { RegisterUserData } from "../../types.js";
-import registerUser from "./usersControlers.js";
+import { registerUser } from "./usersControlers.js";
 
 const res: Partial<Response> = {
   status: jest.fn().mockReturnThis(),

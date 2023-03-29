@@ -1,6 +1,6 @@
 import express from "express";
 import { validate } from "express-validation";
-import registerUser from "../controllers/usersControllers/usersControlers.js";
+import { registerUser } from "../controllers/usersControllers/usersControlers.js";
 import registerUserSchema from "../schemas/registerUserSchema.js";
 
 // eslint-disable-next-line new-cap
