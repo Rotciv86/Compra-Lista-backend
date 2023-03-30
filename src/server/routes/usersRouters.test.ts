@@ -5,7 +5,7 @@ import bcryptjs from "bcryptjs";
 import databaseConnection from "../../database/databaseConnection.js";
 import User from "../../database/models/User.js";
 import app from "../app.js";
-import type { RegisterUserData } from "../types.js";
+import type { RegisterUserData, UserCredentials } from "../types.js";
 
 let server: MongoMemoryServer;
 
@@ -67,6 +67,51 @@ describe("Given the POST /users/sign-up endpoint", () => {
         .expect(expectedStatus);
 
       expect(res.body).toStrictEqual(expectedMessage);
+    });
+  });
+});
+
+describe("Given a POST /users/login endpoint", () => {
+  beforeEach(async () => {
+    const hashedPassword = await bcryptjs.hash("1234", 10);
+    const registerUserData = {
+      username: "Mario",
+      password: hashedPassword,
+    };
+
+    await User.create(registerUserData);
+  });
+
+  describe("When it receives a request with an existent database username 'Mario' and password '1234'", () => {
+    test("Then it should respond with a 200 status and their corresponding token", async () => {
+      const expectedStatus = 200;
+      const loginData = { username: "Mario", password: "1234" };
+      const userToken = "token";
+
+      const response = await request(app)
+        .post("/users/login")
+        .send(loginData)
+        .expect(expectedStatus);
+
+      expect(response.body).toHaveProperty(userToken);
+    });
+  });
+
+  describe("When it receives a request with a not existent in database username 'Round' and password '1313'", () => {
+    test("Then it should respond with status code 401 and the message 'Wrong credentials'", async () => {
+      const requestBody: UserCredentials = {
+        username: "Round",
+        password: "1313",
+      };
+      const expectedStatus = 401;
+      const expectedMessage = { error: "Wrong credentials" };
+
+      const response = await request(app)
+        .post("/users/login")
+        .send(requestBody)
+        .expect(expectedStatus);
+
+      expect(response.body).toStrictEqual(expectedMessage);
     });
   });
 });
